@@ -13,7 +13,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     healthcheck:
-      # MySQL 클라이언트 유틸리티인 mysqladmin 을 이용해서
+      # MySQL 클라이언트 유틸리티인 mysqladmin 을 이용해서 
       # DB가 살아있는지 확인.
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s
@@ -25,6 +25,7 @@ services:
     # ../backend 경로에 있는 Dockerfile로 이미지 빌드
     build: ../backend
     container_name: backend
+    # env_file을 명시하지 않으면 같은 폴더의 .env가 디폴트로 쓰임
     env_file:
       - .env.local.back
     environment:

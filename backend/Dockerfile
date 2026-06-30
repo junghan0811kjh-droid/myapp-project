@@ -1,5 +1,5 @@
 # ===== Build stage =====
-FROM amazoncorretto:17.0.12 as build
+FROM amazoncorretto:17 as build
 WORKDIR /app
 COPY . .
 # Gradle은 보통 빌드 속도를 높이려고 백그라운드 데몬 프로세스를 띄움.
@@ -7,7 +7,7 @@ COPY . .
 RUN ./gradlew build -x test
 
 # ===== Run stage =====
-FROM amazoncorretto:17.0.12
+FROM amazoncorretto:17
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar /app/server.jar
 EXPOSE 8080

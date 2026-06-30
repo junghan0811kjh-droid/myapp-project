@@ -10,5 +10,4 @@ import lombok.ToString;
 public class CreateUserRequest {
     private String name;
     private String city;
-
 }
